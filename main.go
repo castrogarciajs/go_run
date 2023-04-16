@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/sebastian009w/go_run/posts"
+)
 
 func main() {
-	fmt.Println("hello Go")
+
+	post := posts.Post{
+		Title:       "title post",
+		Description: "Description post",
+		Published:   true,
+	}
+	fmt.Println(post)
+
 }
