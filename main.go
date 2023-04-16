@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"githu.com/Sebastian009w/go_run/message"
+	"github.com/sebastian009w/go_run/message"
 	post "github.com/sebastian009w/go_run/posts"
 )
 
