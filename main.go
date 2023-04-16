@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"os"
 
@@ -10,7 +11,7 @@ import (
 
 func main() {
 
-	file, err := os.OpenFile("posts.json", os.O_RDWR, 0666)
+	file, err := os.OpenFile("posts.json", os.O_RDWR|os.O_CREATE, 0666)
 	if err != nil {
 		panic(err)
 	}
@@ -37,4 +38,5 @@ func main() {
 	} else {
 		posts = []post.Post{}
 	}
+	fmt.Println(posts)
 }
