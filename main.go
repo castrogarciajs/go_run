@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"os"
 
+	"githu.com/Sebastian009w/go_run/message"
 	post "github.com/sebastian009w/go_run/posts"
 )
 
@@ -38,5 +38,7 @@ func main() {
 	} else {
 		posts = []post.Post{}
 	}
-	fmt.Println(posts)
+	if len(os.Args) < 2 {
+		message.Message_init()
+	}
 }
