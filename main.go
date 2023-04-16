@@ -13,6 +13,6 @@ func main() {
 		Description: "Description post",
 		Published:   true,
 	}
-	fmt.Println(post)
+	fmt.Println(post.Title)
 
 }
