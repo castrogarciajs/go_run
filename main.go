@@ -1,6 +1,12 @@
 package main
 
-import "os"
+import (
+	"encoding/json"
+	"io"
+	"os"
+
+	post "github.com/sebastian009w/go_run/posts"
+)
 
 func main() {
 
@@ -9,4 +15,26 @@ func main() {
 		panic(err)
 	}
 	defer file.Close()
+
+	var posts []post.Post
+
+	info, err := file.Stat()
+
+	if err != nil {
+		panic(err)
+	}
+
+	if info.Size() != 0 {
+		bytes, err := io.ReadAll(file)
+
+		if err != nil {
+			panic(err)
+		}
+		err = json.Unmarshal(bytes, &posts)
+		if err != nil {
+			panic(err)
+		}
+	} else {
+		posts = []post.Post{}
+	}
 }
