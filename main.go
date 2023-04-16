@@ -1,18 +1,12 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/sebastian009w/go_run/posts"
-)
+import "os"
 
 func main() {
 
-	post := posts.Post{
-		Title:       "title post",
-		Description: "Description post",
-		Published:   true,
+	file, err := os.OpenFile("tasks.json", os.O_RDWR, 0666)
+	if err != nil {
+		panic(err)
 	}
-	fmt.Println(post.Title)
-
+	defer file.Close()
 }
