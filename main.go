@@ -31,6 +31,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+
 		err = json.Unmarshal(bytes, &posts)
 		if err != nil {
 			panic(err)
@@ -40,5 +41,9 @@ func main() {
 	}
 	if len(os.Args) < 2 {
 		message.Message_init()
+	}
+
+	if os.Args[1] == "--help" {
+		message.Help_me()
 	}
 }
