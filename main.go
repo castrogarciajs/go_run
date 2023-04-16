@@ -4,7 +4,7 @@ import "os"
 
 func main() {
 
-	file, err := os.OpenFile("tasks.json", os.O_RDWR, 0666)
+	file, err := os.OpenFile("posts.json", os.O_RDWR, 0666)
 	if err != nil {
 		panic(err)
 	}
