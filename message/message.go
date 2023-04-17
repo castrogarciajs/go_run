@@ -7,5 +7,5 @@ func Message_init() {
 }
 
 func Help_me() {
-	fmt.Println("Comandos disponibles: --posts | --create | --delete |--completed")
+	fmt.Println("Opciones disponibles: [ --posts | --create | --delete |--completed ]")
 }

@@ -39,6 +39,7 @@ func main() {
 	} else {
 		posts = []post.Post{}
 	}
+
 	if len(os.Args) < 2 {
 		message.Message_init()
 	}
