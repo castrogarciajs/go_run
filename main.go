@@ -44,7 +44,10 @@ func main() {
 		message.Message_init()
 	}
 
-	if os.Args[1] == "--help" {
+	switch os.Args[1] {
+	case "--help":
 		message.Help_me()
+	case "--posts":
+		post.List_posts(posts)
 	}
 }
