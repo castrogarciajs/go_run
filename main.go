@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
+	"fmt"
 	"io"
 	"os"
+	"strings"
 
 	"github.com/sebastian009w/go_run/message"
 	post "github.com/sebastian009w/go_run/posts"
@@ -49,5 +52,13 @@ func main() {
 		message.Help_me()
 	case "--posts":
 		post.List_posts(posts)
+	case "--create":
+		reader := bufio.NewReader(os.Stdin)
+		fmt.Println("Cual es tu tarea ?: ")
+		title, _ := reader.ReadString('\n')
+		title = strings.TrimSpace(title)
+
+		posts = post.Add_post(posts, title)
+		fmt.Println(posts)
 	}
 }
