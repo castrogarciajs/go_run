@@ -1,6 +1,11 @@
 package post
 
-import "fmt"
+import (
+	"bufio"
+	"encoding/json"
+	"fmt"
+	"os"
+)
 
 type Post struct {
 	ID        int    `json:"id"`
@@ -25,9 +30,43 @@ func List_posts(posts []Post) {
 
 func Add_post(posts []Post, title string) []Post {
 	post := Post{
-		ID:        4,
-		Title:     "TITLE FOR",
+		ID:        Gen_ID(posts),
+		Title:     title,
 		Completed: false,
 	}
 	return append(posts, post)
+}
+
+func Add_JSON(file *os.File, posts []Post) {
+	bytes, err := json.Marshal(posts)
+
+	if err != nil {
+		panic(err)
+	}
+	_, err = file.Seek(0, 0)
+	if err != nil {
+		panic(err)
+	}
+
+	err = file.Truncate(0)
+	if err != nil {
+		panic(err)
+	}
+	writter := bufio.NewWriter(file)
+	_, err = writter.Write(bytes)
+
+	if err != nil {
+		panic(err)
+	}
+	err = writter.Flush()
+	if err != nil {
+		panic(err)
+	}
+}
+
+func Gen_ID(posts []Post) int {
+	if len(posts) == 0 {
+		return 1
+	}
+	return posts[len(posts)-1].ID + 1
 }

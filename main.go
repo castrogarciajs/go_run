@@ -59,6 +59,6 @@ func main() {
 		title = strings.TrimSpace(title)
 
 		posts = post.Add_post(posts, title)
-		fmt.Println(posts)
+		post.Add_JSON(file, posts)
 	}
 }
