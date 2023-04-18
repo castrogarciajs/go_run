@@ -22,3 +22,12 @@ func List_posts(posts []Post) {
 		fmt.Printf("[%s] %d %s \n", status, post.ID, post.Title)
 	}
 }
+
+func Add_post(posts []Post, title string) []Post {
+	post := Post{
+		ID:        4,
+		Title:     "TITLE FOR",
+		Completed: false,
+	}
+	return append(posts, post)
+}
