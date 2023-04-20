@@ -60,5 +60,7 @@ func main() {
 
 		posts = post.Add_post(posts, title)
 		post.Add_JSON(file, posts)
+	case "--delete":
+		fmt.Println("delete")
 	}
 }
