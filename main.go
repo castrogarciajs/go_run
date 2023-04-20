@@ -61,6 +61,8 @@ func main() {
 		posts = post.Add_post(posts, title)
 		post.Add_JSON(file, posts)
 	case "--delete":
-		fmt.Println("delete")
+		if len(os.Args) < 3 {
+			fmt.Println("debes proporcionar un ID para eliminar")
+		}
 	}
 }
