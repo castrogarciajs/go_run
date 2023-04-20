@@ -70,3 +70,12 @@ func Gen_ID(posts []Post) int {
 	}
 	return posts[len(posts)-1].ID + 1
 }
+
+func Delete_post(posts []Post, id int) []Post {
+	for i, post := range posts {
+		if post.ID == id {
+			return append(posts[:i], posts[i+1:]...)
+		}
+	}
+	return posts
+}

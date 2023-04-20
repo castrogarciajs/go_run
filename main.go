@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/sebastian009w/go_run/message"
@@ -60,5 +61,18 @@ func main() {
 
 		posts = post.Add_post(posts, title)
 		post.Add_JSON(file, posts)
+	case "--delete":
+		if len(os.Args) < 3 {
+			fmt.Println("debes proporcionar un ID para eliminar")
+		}
+		id, err := strconv.Atoi(os.Args[2])
+
+		if err != nil {
+			fmt.Println("El Id debe ser un numero")
+			return
+		}
+		posts = post.Delete_post(posts, id)
+		post.Add_JSON(file, posts)
+
 	}
 }
