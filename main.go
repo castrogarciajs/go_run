@@ -46,6 +46,7 @@ func main() {
 
 	if len(os.Args) < 2 {
 		message.Message_init()
+		return
 	}
 
 	switch os.Args[1] {
@@ -76,6 +77,7 @@ func main() {
 	case "--completed":
 		if len(os.Args) < 3 {
 			fmt.Println("debes proporcionar un ID para completar")
+			return
 		}
 		id, err := strconv.Atoi(os.Args[2])
 
@@ -85,5 +87,7 @@ func main() {
 		}
 		posts = post.Completed_post(posts, id)
 		post.Add_JSON(file, posts)
+	default:
+		message.Help_me()
 	}
 }
