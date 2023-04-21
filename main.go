@@ -73,6 +73,17 @@ func main() {
 		}
 		posts = post.Delete_post(posts, id)
 		post.Add_JSON(file, posts)
+	case "--completed":
+		if len(os.Args) < 3 {
+			fmt.Println("debes proporcionar un ID para completar")
+		}
+		id, err := strconv.Atoi(os.Args[2])
 
+		if err != nil {
+			fmt.Println("El Id debe ser un numero")
+			return
+		}
+		posts = post.Completed_post(posts, id)
+		post.Add_JSON(file, posts)
 	}
 }
