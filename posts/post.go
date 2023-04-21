@@ -79,3 +79,13 @@ func Delete_post(posts []Post, id int) []Post {
 	}
 	return posts
 }
+
+func Completed_post(posts []Post, id int) []Post {
+	for i, post := range posts {
+		if post.ID == id {
+			posts[i].Completed = true
+			break
+		}
+	}
+	return posts
+}
